@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Internal / non-public pages — keep out of the index
+Disallow: /Dashboard.html
+Disallow: /index-print.html
+Disallow: /Business%20Cards.html
+Disallow: /Colour%20Palettes.html
+Disallow: /Logo%20Concepts.html
+Disallow: /Logo%20Concepts%20-%20LL%20Branches.html
+
+Sitemap: https://lexaminlegal.com/sitemap.xml
