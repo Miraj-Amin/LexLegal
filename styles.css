@@ -2872,4 +2872,55 @@ body:not(.no-glass).theme-heritage .nav {
   }
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   MOBILE HARDENING — prevent horizontal overflow (iOS zoom-out fix)
+   The biggest cause of "doesn't scale on a phone" is a single element
+   wider than the viewport: the browser then shrinks the whole page to
+   fit. The section tags (inline-flex, no-wrap) ran up to ~480px wide.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Safety net: clip any stray horizontal overflow. `clip` (not `hidden`)
+   does NOT create a scroll container, so it leaves the sticky nav and
+   fixed elements untouched. */
+html, body { overflow-x: clip; }
+*, *::before, *::after { min-width: 0; }
+
+/* Section number tags must wrap instead of forcing the page wider. */
+.sec-tag { flex-wrap: wrap; max-width: 100%; }
+.sec-tag > span { min-width: 0; }
+
+/* Long words (URLs, emails) shouldn't punch out of narrow columns. */
+.contact-line-big .v,
+.detail-row .value,
+.dash-cell.contact,
+.foot-col a { overflow-wrap: anywhere; }
+
+@media (max-width: 600px) {
+  .wrap, .nav-inner { padding-left: 20px; padding-right: 20px; }
+
+  /* Tighten oversized display type so it never exceeds the screen. */
+  .hero h1 { font-size: clamp(38px, 11vw, 60px); }
+  body.layout-editorial .hero h1 { font-size: clamp(40px, 13vw, 64px); }
+  .page-hero h1, .people-hero h1 { font-size: clamp(34px, 10vw, 60px); }
+  .contact h2 { font-size: clamp(34px, 10vw, 56px); }
+  .services-head h2, .exp-head h2 { font-size: clamp(32px, 9vw, 52px); }
+
+  /* Hero stat row: keep 3-up but shrink so figures don't collide. */
+  .hero-meta { gap: 6px; padding-top: 26px; }
+  .hero-meta > div { padding-left: 14px !important; padding-right: 10px !important; }
+  .hero-meta .num { font-size: 30px; }
+  .hero-meta .num span { font-size: 15px !important; }
+
+  /* Marquee reads better a touch smaller on phones. */
+  .marquee-item { font-size: 22px; padding-right: 24px; }
+
+  /* WhatsApp pill shouldn't crowd the corner. */
+  .whatsapp-fab { bottom: 18px; right: 18px; }
+}
+
+@media (max-width: 380px) {
+  .hero-meta { grid-template-columns: 1fr; gap: 18px; }
+  .hero-meta > div { padding-left: 12px !important; }
+}
+
 
