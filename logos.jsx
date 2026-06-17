@@ -1,7 +1,25 @@
-// Lexamin Legal — Logo lockups (3 directions)
-// Renders SVG monograms + wordmarks. Single component selects direction by prop.
+// Lexamin Legal — Logo lockups
+// Primary brand mark is the gold "LL" monogram supplied by the client.
+// The legacy SVG directions are kept below for reference but the mark now
+// always renders the final artwork, regardless of the `direction` prop.
+
+const LL_MARK_SRC = "images/lexamin-ll-mark.png";
 
 const LogoMark = ({ direction = "cipher", color = "currentColor", accent = "#c9a25f", size = 48, animated = false }) => {
+  // Final brand mark: gold LL monogram. Width tracks the artwork's aspect
+  // ratio (484×515) so it never distorts at any size.
+  return (
+    <img
+      src={LL_MARK_SRC}
+      alt="Lexamin Legal"
+      width={Math.round(size * (484 / 515))}
+      height={size}
+      style={{ display: "block", width: "auto", height: size, objectFit: "contain" }}
+    />
+  );
+};
+
+const LegacyLogoMark = ({ direction = "cipher", color = "currentColor", accent = "#c9a25f", size = 48, animated = false }) => {
   if (direction === "cipher") {
     // Branch 8B — Interlocked Cipher: one L upright, one rotated 180°,
     // overlapping inside a square frame. Wax-stamp / sealed feel.

@@ -445,19 +445,6 @@ const App = () => {
       <FloatingWhatsApp />
 
       <TweaksPanel title="Tweaks">
-        <TweakSection label="Logo direction">
-          <TweakSelect
-            label="Mark"
-            value={t.logoDirection}
-            onChange={(v) => setTweak("logoDirection", v)}
-            options={[
-            { value: "cipher", label: "Interlocked Cipher (8B)" },
-            { value: "house", label: "House (L·A·L)" },
-            { value: "authority", label: "Structured Authority" },
-            { value: "heritage", label: "Modern Heritage" },
-            { value: "edge", label: "Contemporary Edge" }]
-            } />
-        </TweakSection>
         <TweakSection label="Theme">
           <TweakRadio
             label="Palette"

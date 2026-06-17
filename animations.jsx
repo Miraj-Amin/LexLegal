@@ -239,15 +239,7 @@ const PageTransition = () => {
     <div className="page-transition covering" ref={overlayRef} aria-hidden="true">
       <div className="pt-bg" />
       <div className="pt-mark">
-        <svg width="120" height="120" viewBox="0 0 100 100" aria-hidden="true">
-          <rect x="3" y="3" width="94" height="94" fill="none" stroke="rgba(244,240,230,0.35)" strokeWidth="1.4" />
-          <rect x="26" y="22" width="9" height="56" fill="#c9a25f" />
-          <rect x="26" y="69" width="36" height="9" fill="#c9a25f" />
-          <g transform="rotate(180 50 50)">
-            <rect x="26" y="22" width="9" height="56" fill="#c9a25f" opacity="0.6" />
-            <rect x="26" y="69" width="36" height="9" fill="#c9a25f" opacity="0.6" />
-          </g>
-        </svg>
+        <img src="images/lexamin-ll-mark.png" alt="Lexamin Legal" width="106" height="113" style={{ display: "block", width: "auto", height: 113 }} />
       </div>
     </div>
   );
@@ -392,15 +384,7 @@ const LogoFlash = () => {
   return (
     <div className={`logo-flash ${active ? "active" : ""}`} aria-hidden="true">
       <div className="lf-mark">
-        <svg width="120" height="120" viewBox="0 0 100 100">
-          <rect x="3" y="3" width="94" height="94" fill="none" stroke="rgba(244,240,230,0.4)" strokeWidth="1.4" />
-          <rect x="26" y="22" width="9" height="56" fill="#c9a25f" />
-          <rect x="26" y="69" width="36" height="9" fill="#c9a25f" />
-          <g transform="rotate(180 50 50)">
-            <rect x="26" y="22" width="9" height="56" fill="#c9a25f" opacity="0.6" />
-            <rect x="26" y="69" width="36" height="9" fill="#c9a25f" opacity="0.6" />
-          </g>
-        </svg>
+        <img src="images/lexamin-ll-mark.png" alt="Lexamin Legal" width="106" height="113" style={{ display: "block", width: "auto", height: 113 }} />
       </div>
     </div>
   );
