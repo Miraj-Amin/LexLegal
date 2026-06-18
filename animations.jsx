@@ -18,8 +18,8 @@ function useReveal({ delay = 0, threshold = 0.15, once = true } = {}) {
     const obs = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting) {
-          if (delay) setTimeout(() => el.classList.add("in-view"), delay);
-          else el.classList.add("in-view");
+          if (delay) setTimeout(() => el.classList.add("in-view"), delay);else
+          el.classList.add("in-view");
           if (once) obs.unobserve(el);
         } else if (!once) {
           el.classList.remove("in-view");
@@ -39,8 +39,8 @@ const Reveal = ({ as: Tag = "div", delay = 0, kind = "up", className = "", child
   return (
     <Tag ref={ref} className={`reveal reveal-${kind} ${className}`} {...rest}>
       {children}
-    </Tag>
-  );
+    </Tag>);
+
 };
 
 // ── useCount ───────────────────────────────────────────────────────
@@ -91,7 +91,7 @@ function useMagnetic(strength = 0.3) {
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let rect = null;
-    const enter = () => { rect = el.getBoundingClientRect(); };
+    const enter = () => {rect = el.getBoundingClientRect();};
     const move = (e) => {
       if (!rect) rect = el.getBoundingClientRect();
       const cx = rect.left + rect.width / 2;
@@ -100,7 +100,7 @@ function useMagnetic(strength = 0.3) {
       const dy = (e.clientY - cy) * strength;
       el.style.transform = `translate(${dx}px, ${dy}px)`;
     };
-    const leave = () => { el.style.transform = ""; };
+    const leave = () => {el.style.transform = "";};
     el.addEventListener("mouseenter", enter);
     el.addEventListener("mousemove", move);
     el.addEventListener("mouseleave", leave);
@@ -152,17 +152,17 @@ const CustomCursor = () => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (window.matchMedia("(pointer: coarse)").matches) return; // touch
     document.body.classList.add("has-custom-cursor");
-    let mx = window.innerWidth / 2, my = window.innerHeight / 2;
-    let rx = mx, ry = my;
+    let mx = window.innerWidth / 2,my = window.innerHeight / 2;
+    let rx = mx,ry = my;
     const dot = dotRef.current;
     const ring = ringRef.current;
-    const onMove = (e) => { mx = e.clientX; my = e.clientY; };
+    const onMove = (e) => {mx = e.clientX;my = e.clientY;};
     const onDown = () => ring.classList.add("down");
     const onUp = () => ring.classList.remove("down");
     const onOver = (e) => {
       const t = e.target.closest("a, button, [data-magnetic], [role='button'], input, .hoverable");
-      if (t) ring.classList.add("hover");
-      else ring.classList.remove("hover");
+      if (t) ring.classList.add("hover");else
+      ring.classList.remove("hover");
     };
     window.addEventListener("mousemove", onMove);
     window.addEventListener("mousedown", onDown);
@@ -190,8 +190,8 @@ const CustomCursor = () => {
     <>
       <div className="cursor-dot" ref={dotRef} aria-hidden="true" />
       <div className="cursor-ring" ref={ringRef} aria-hidden="true" />
-    </>
-  );
+    </>);
+
 };
 
 // ── PageTransition ─────────────────────────────────────────────────
@@ -241,8 +241,8 @@ const PageTransition = () => {
       <div className="pt-mark">
         <img src="images/lexamin-ll-mark.png" alt="Lexamin Legal" width="106" height="113" style={{ display: "block", width: "auto", height: 113 }} />
       </div>
-    </div>
-  );
+    </div>);
+
 };
 
 // ── LiveClock ──────────────────────────────────────────────────────
@@ -258,8 +258,8 @@ const LiveClock = () => {
       <span className="dot" />
       <span className="lbl">London</span>
       <span className="time">{time}</span>
-    </div>
-  );
+    </div>);
+
 };
 function formatLondon() {
   try {
@@ -269,7 +269,7 @@ function formatLondon() {
     }).format(new Date());
   } catch (e) {
     const d = new Date();
-    return `${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}`;
+    return `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
   }
 }
 
@@ -295,13 +295,13 @@ const ScrambleText = ({ text, duration = 900, className }) => {
           const k = Math.min(1, (t - t0) / duration);
           const result = text.split("").map((c, i) => {
             if (c === " ") return " ";
-            const settleAt = (i / text.length) * 0.85;
+            const settleAt = i / text.length * 0.85;
             if (k > settleAt + 0.15) return c;
             return chars[Math.floor(Math.random() * chars.length)];
           }).join("");
           setOut(result);
-          if (k < 1) requestAnimationFrame(tick);
-          else setOut(text);
+          if (k < 1) requestAnimationFrame(tick);else
+          setOut(text);
         };
         requestAnimationFrame(tick);
         obs.unobserve(el);
@@ -321,15 +321,15 @@ const Marquee = ({ items, duration = 35, separator = "·" }) => {
   return (
     <div className="marquee" aria-hidden="true">
       <div className="marquee-track" style={{ animationDuration: `${duration}s` }}>
-        {doubled.map((it, i) => (
-          <span key={i} className="marquee-item">
+        {doubled.map((it, i) =>
+        <span key={i} className="marquee-item">
             <span>{it}</span>
             <span className="marquee-sep">{separator}</span>
           </span>
-        ))}
+        )}
       </div>
-    </div>
-  );
+    </div>);
+
 };
 
 // ── SpotlightSection ───────────────────────────────────────────────
@@ -376,7 +376,7 @@ const LogoFlash = () => {
       e.preventDefault();
       setActive(true);
       // brief flash, then navigate
-      setTimeout(() => { window.location.href = a.href; }, 520);
+      setTimeout(() => {window.location.href = a.href;}, 520);
     };
     document.addEventListener("click", onClick);
     return () => document.removeEventListener("click", onClick);
@@ -386,8 +386,8 @@ const LogoFlash = () => {
       <div className="lf-mark">
         <img src="images/lexamin-ll-mark.png" alt="Lexamin Legal" width="106" height="113" style={{ display: "block", width: "auto", height: 113 }} />
       </div>
-    </div>
-  );
+    </div>);
+
 };
 
 Object.assign(window, {
@@ -401,5 +401,5 @@ Object.assign(window, {
   LiveClock,
   ScrambleText,
   Marquee,
-  useSpotlight,
+  useSpotlight
 });

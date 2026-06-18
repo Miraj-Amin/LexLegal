@@ -1378,7 +1378,11 @@ body.has-custom-cursor textarea { cursor: none !important; }
   padding: 6px 10px;
   border: 1px solid var(--line-dark);
   background: rgba(244, 240, 230, 0.02);
+  flex-shrink: 0;
+  white-space: nowrap;
 }
+.live-clock .lbl,
+.live-clock .time { flex-shrink: 0; white-space: nowrap; }
 .live-clock .dot {
   width: 6px; height: 6px;
   background: var(--gold);
@@ -2922,5 +2926,23 @@ html, body { overflow-x: clip; }
   .hero-meta { grid-template-columns: 1fr; gap: 18px; }
   .hero-meta > div { padding-left: 12px !important; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   FIXES — equal-height principle tiles + readable form labels
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Principle cards are wrapped in .reveal animation divs, which become the
+   grid items. Stretch the wrapper AND the card so every tile in a row is
+   the same height regardless of how much copy it holds. */
+.principles-grid > .reveal { height: 100%; display: flex; }
+.principles-grid .principle { height: 100%; width: 100%; }
+
+/* The enquiry form sits on a light glass card. The section-level
+   .contact .sec-tag rule paints the brackets near-white and the label
+   gold — both unreadable here. Restore dark, high-contrast text. */
+.form .sec-tag { color: var(--gold-soft); }
+.form .sec-tag .bracket { color: var(--ink-soft) !important; opacity: 0.6; }
+.form-field label { color: var(--navy); }
+.form-field label .req { color: var(--gold-soft); }
 
 

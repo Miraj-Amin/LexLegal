@@ -20,12 +20,12 @@ function loadEnquiries() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     return raw ? JSON.parse(raw) : [];
-  } catch (e) { return []; }
+  } catch (e) {return [];}
 }
 function saveEnquiry(record) {
   const all = loadEnquiries();
   all.unshift(record);
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(all)); } catch (e) {}
+  try {localStorage.setItem(STORAGE_KEY, JSON.stringify(all));} catch (e) {}
   return all;
 }
 
@@ -36,20 +36,20 @@ const FORM_CONFIGS = {
     title: "Property quote request",
     submitLabel: "Send enquiry",
     fields: [
-      { k: "name",      label: "Your name",            type: "text",  required: true,  col: 6 },
-      { k: "email",     label: "Email",                type: "email", required: true,  col: 6 },
-      { k: "mobile",    label: "Mobile",               type: "tel",   required: true,  col: 6 },
-      { k: "matter",    label: "Transaction type",     type: "select", required: true, col: 6,
-        options: ["Buying", "Selling", "Remortgaging", "Transfer of equity", "Other"] },
-      { k: "address",   label: "Property address",     type: "text",  col: 12, placeholder: "Full address including postcode" },
-      { k: "price",     label: "Property price (£)",   type: "text",  col: 6 },
-      { k: "tenure",    label: "Tenure",               type: "select", col: 6,
-        options: ["Freehold", "Leasehold", "Unknown"] },
-      { k: "lender",    label: "Mortgage lender (if known)", type: "text", col: 6 },
-      { k: "agent",     label: "Estate agent / broker", type: "text", col: 6 },
-      { k: "timescale", label: "Target timescale",     type: "text",  col: 12, placeholder: "e.g. exchange in 6 weeks" },
-      { k: "notes",     label: "Anything urgent or unusual?", type: "textarea", col: 12, rows: 4 },
-    ],
+    { k: "name", label: "Your name", type: "text", required: true, col: 6 },
+    { k: "email", label: "Email", type: "email", required: true, col: 6 },
+    { k: "mobile", label: "Mobile", type: "tel", required: true, col: 6 },
+    { k: "matter", label: "Transaction type", type: "select", required: true, col: 6,
+      options: ["Buying", "Selling", "Remortgaging", "Transfer of equity", "Other"] },
+    { k: "address", label: "Property address", type: "text", col: 12, placeholder: "Full address including postcode" },
+    { k: "price", label: "Property price (£)", type: "text", col: 6 },
+    { k: "tenure", label: "Tenure", type: "select", col: 6,
+      options: ["Freehold", "Leasehold", "Unknown"] },
+    { k: "lender", label: "Mortgage lender (if known)", type: "text", col: 6 },
+    { k: "agent", label: "Estate agent / broker", type: "text", col: 6 },
+    { k: "timescale", label: "Target timescale", type: "text", col: 12, placeholder: "e.g. exchange in 6 weeks" },
+    { k: "notes", label: "Anything urgent or unusual?", type: "textarea", col: 12, rows: 4 }]
+
   },
 
   referral: {
@@ -57,20 +57,20 @@ const FORM_CONFIGS = {
     title: "Refer a client",
     submitLabel: "Refer client",
     fields: [
-      { k: "agent_name",  label: "Your name",            type: "text",  required: true, col: 6 },
-      { k: "agent_co",    label: "Company",              type: "text",  required: true, col: 6 },
-      { k: "agent_email", label: "Your email",           type: "email", required: true, col: 6 },
-      { k: "agent_mobile",label: "Your mobile",          type: "tel",   required: true, col: 6 },
-      { k: "client_name", label: "Client name",         type: "text",  required: true, col: 12 },
-      { k: "client_mobile", label: "Client mobile",     type: "tel",   col: 6 },
-      { k: "client_email", label: "Client email",       type: "email", col: 6 },
-      { k: "matter",      label: "Transaction type",    type: "select", required: true, col: 6,
-        options: ["Purchase", "Sale", "Sale & purchase", "Remortgage", "Transfer of equity", "Auction", "Other"] },
-      { k: "address",     label: "Property address",    type: "text",  col: 12 },
-      { k: "price",       label: "Price (£)",           type: "text",  col: 6 },
-      { k: "urgency",     label: "Target exchange / urgency", type: "text", col: 6 },
-      { k: "notes",       label: "Notes",               type: "textarea", col: 12, rows: 4 },
-    ],
+    { k: "agent_name", label: "Your name", type: "text", required: true, col: 6 },
+    { k: "agent_co", label: "Company", type: "text", required: true, col: 6 },
+    { k: "agent_email", label: "Your email", type: "email", required: true, col: 6 },
+    { k: "agent_mobile", label: "Your mobile", type: "tel", required: true, col: 6 },
+    { k: "client_name", label: "Client name", type: "text", required: true, col: 12 },
+    { k: "client_mobile", label: "Client mobile", type: "tel", col: 6 },
+    { k: "client_email", label: "Client email", type: "email", col: 6 },
+    { k: "matter", label: "Transaction type", type: "select", required: true, col: 6,
+      options: ["Purchase", "Sale", "Sale & purchase", "Remortgage", "Transfer of equity", "Auction", "Other"] },
+    { k: "address", label: "Property address", type: "text", col: 12 },
+    { k: "price", label: "Price (£)", type: "text", col: 6 },
+    { k: "urgency", label: "Target exchange / urgency", type: "text", col: 6 },
+    { k: "notes", label: "Notes", type: "textarea", col: 12, rows: 4 }]
+
   },
 
   certification: {
@@ -78,26 +78,26 @@ const FORM_CONFIGS = {
     title: "Document certification / ID1 appointment",
     submitLabel: "Request appointment",
     fields: [
-      { k: "name",     label: "Your name",       type: "text",  required: true, col: 6 },
-      { k: "email",    label: "Email",           type: "email", required: true, col: 6 },
-      { k: "mobile",   label: "Mobile",          type: "tel",   required: true, col: 6 },
-      { k: "service",  label: "What do you need?", type: "select", required: true, col: 6,
-        options: [
-          "ID1 form",
-          "ID2 form",
-          "Certified ID",
-          "Certified proof of address",
-          "Statutory declaration",
-          "Oath / affidavit",
-          "Witness signature",
-          "Other",
-        ] },
-      { k: "deadline", label: "Deadline",        type: "text",  col: 6, placeholder: "e.g. by Friday" },
-      { k: "location", label: "Location",        type: "text",  col: 6, placeholder: "e.g. SW London / SW1A" },
-      { k: "local",    label: "Can you attend locally?", type: "select", col: 6,
-        options: ["Yes", "No", "Either"] },
-      { k: "notes",    label: "Anything else we should know?", type: "textarea", col: 12, rows: 3 },
-    ],
+    { k: "name", label: "Your name", type: "text", required: true, col: 6 },
+    { k: "email", label: "Email", type: "email", required: true, col: 6 },
+    { k: "mobile", label: "Mobile", type: "tel", required: true, col: 6 },
+    { k: "service", label: "What do you need?", type: "select", required: true, col: 6,
+      options: [
+      "ID1 form",
+      "ID2 form",
+      "Certified ID",
+      "Certified proof of address",
+      "Statutory declaration",
+      "Oath / affidavit",
+      "Witness signature",
+      "Other"]
+    },
+    { k: "deadline", label: "Deadline", type: "text", col: 6, placeholder: "e.g. by Friday" },
+    { k: "location", label: "Location", type: "text", col: 6, placeholder: "e.g. SW London / SW1A" },
+    { k: "local", label: "Can you attend locally?", type: "select", col: 6,
+      options: ["Yes", "No", "Either"] },
+    { k: "notes", label: "Anything else we should know?", type: "textarea", col: 12, rows: 3 }]
+
   },
 
   general: {
@@ -105,14 +105,14 @@ const FORM_CONFIGS = {
     title: "Make an enquiry",
     submitLabel: "Send message",
     fields: [
-      { k: "name",    label: "Your name", type: "text",  required: true, col: 6 },
-      { k: "email",   label: "Email",     type: "email", required: true, col: 6 },
-      { k: "mobile",  label: "Mobile",    type: "tel",   col: 6 },
-      { k: "topic",   label: "I'm enquiring about", type: "select", required: true, col: 6,
-        options: ["Property quote", "Agent / broker referral", "Document certification", "Other"] },
-      { k: "message", label: "Message",   type: "textarea", required: true, col: 12, rows: 5 },
-    ],
-  },
+    { k: "name", label: "Your name", type: "text", required: true, col: 6 },
+    { k: "email", label: "Email", type: "email", required: true, col: 6 },
+    { k: "mobile", label: "Mobile", type: "tel", col: 6 },
+    { k: "topic", label: "I'm enquiring about", type: "select", required: true, col: 6,
+      options: ["Property quote", "Agent / broker referral", "Document certification", "Other"] },
+    { k: "message", label: "Message", type: "textarea", required: true, col: 12, rows: 5 }]
+
+  }
 };
 
 // ── EnquiryForm ────────────────────────────────────────────────────
@@ -124,13 +124,13 @@ const EnquiryForm = ({ kind = "quote", id, compact = false }) => {
   const [returnedRecord, setReturnedRecord] = React.useState(null);
 
   const update = (k, v) => {
-    setValues(prev => ({ ...prev, [k]: v }));
-    if (errors[k]) setErrors(prev => ({ ...prev, [k]: null }));
+    setValues((prev) => ({ ...prev, [k]: v }));
+    if (errors[k]) setErrors((prev) => ({ ...prev, [k]: null }));
   };
 
   const validate = () => {
     const errs = {};
-    cfg.fields.forEach(f => {
+    cfg.fields.forEach((f) => {
       if (f.required && !values[f.k]) errs[f.k] = "Required";
       if (f.type === "email" && values[f.k] && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(values[f.k])) errs[f.k] = "Invalid email";
     });
@@ -142,7 +142,7 @@ const EnquiryForm = ({ kind = "quote", id, compact = false }) => {
     e.preventDefault();
     if (!validate()) {
       // Scroll first error into view
-      const firstErrKey = cfg.fields.find(f => errors[f.k] || (f.required && !values[f.k]))?.k;
+      const firstErrKey = cfg.fields.find((f) => errors[f.k] || f.required && !values[f.k])?.k;
       if (firstErrKey) {
         const el = document.querySelector(`[data-field="${firstErrKey}"]`);
         if (el) el.scrollIntoView({ block: "center", behavior: "smooth" });
@@ -158,7 +158,7 @@ const EnquiryForm = ({ kind = "quote", id, compact = false }) => {
       title: cfg.title,
       source: window.location.pathname.split("/").pop() || "index.html",
       status: "New",
-      data: { ...values },
+      data: { ...values }
     };
 
     saveEnquiry(record);
@@ -169,7 +169,7 @@ const EnquiryForm = ({ kind = "quote", id, compact = false }) => {
         await fetch(FORM_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify(record),
+          body: JSON.stringify(record)
         });
       } catch (err) {
         console.warn("Remote submission failed:", err);
@@ -179,23 +179,23 @@ const EnquiryForm = ({ kind = "quote", id, compact = false }) => {
     // Build mailto fallback (always opens — gives Nikhil the email)
     const subject = `[Lexamin Legal] ${cfg.title} — ${values.name || values.agent_name || values.client_name || "New enquiry"}`;
     const bodyLines = [
-      `New enquiry submitted via lexaminlegal.com`,
-      ``,
-      `Type: ${cfg.title}`,
-      `Received: ${new Date(record.ts).toLocaleString("en-GB", { timeZone: "Europe/London" })}`,
-      `Source: ${record.source}`,
-      `Reference: ${record.id}`,
-      ``,
-      `─────────────────────────────`,
-    ];
-    cfg.fields.forEach(f => {
+    `New enquiry submitted via lexaminlegal.com`,
+    ``,
+    `Type: ${cfg.title}`,
+    `Received: ${new Date(record.ts).toLocaleString("en-GB", { timeZone: "Europe/London" })}`,
+    `Source: ${record.source}`,
+    `Reference: ${record.id}`,
+    ``,
+    `─────────────────────────────`];
+
+    cfg.fields.forEach((f) => {
       if (values[f.k]) bodyLines.push(`${f.label}: ${values[f.k]}`);
     });
     bodyLines.push(`─────────────────────────────`);
     const mailtoHref =
-      `mailto:${RECIPIENT_EMAIL}` +
-      `?subject=${encodeURIComponent(subject)}` +
-      `&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+    `mailto:${RECIPIENT_EMAIL}` +
+    `?subject=${encodeURIComponent(subject)}` +
+    `&body=${encodeURIComponent(bodyLines.join("\n"))}`;
 
     // Open mailto in a new tab so it doesn't navigate away
     setTimeout(() => {
@@ -231,57 +231,57 @@ const EnquiryForm = ({ kind = "quote", id, compact = false }) => {
           <a href={window.WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" className="btn btn-solid">
             WhatsApp Nikhil
           </a>
-          <button className="btn btn-light" onClick={() => { setState("idle"); setValues({}); setReturnedRecord(null); }}>
+          <button className="btn btn-light" onClick={() => {setState("idle");setValues({});setReturnedRecord(null);}}>
             Submit another
           </button>
         </div>
-      </div>
-    );
+      </div>);
+
   }
 
   // ── Form ────────────────────────────────────────────────────────
   return (
-    <form className={`form ${compact ? "form-compact" : ""}`} id={id} onSubmit={handleSubmit} noValidate>
+    <form className={`form ${compact ? "form-compact" : ""}`} id={id} onSubmit={handleSubmit} noValidate style={{ opacity: "1" }}>
       <div className="form-head">
         <div className="sec-tag">
           <span className="bracket">[</span>
           <span>{cfg.id.toUpperCase()}.FORM</span>
           <span className="bracket">/</span>
-          <span>{cfg.fields.filter(f => f.required).length} required fields</span>
+          <span>{cfg.fields.filter((f) => f.required).length} required fields</span>
           <span className="bracket">]</span>
         </div>
         <h3>{cfg.title}</h3>
       </div>
       <div className="form-grid">
-        {cfg.fields.map(f => (
-          <div className={`form-field col-${f.col || 12} ${errors[f.k] ? "has-error" : ""}`}
-               key={f.k} data-field={f.k}>
+        {cfg.fields.map((f) =>
+        <div className={`form-field col-${f.col || 12} ${errors[f.k] ? "has-error" : ""}`}
+        key={f.k} data-field={f.k}>
             <label htmlFor={`${id}-${f.k}`}>
               {f.label}
               {f.required && <span className="req"> *</span>}
             </label>
-            {f.type === "textarea" ? (
-              <textarea id={`${id}-${f.k}`} rows={f.rows || 4}
-                placeholder={f.placeholder || ""}
-                value={values[f.k] || ""}
-                onChange={(e) => update(f.k, e.target.value)} />
-            ) : f.type === "select" ? (
-              <select id={`${id}-${f.k}`}
-                value={values[f.k] || ""}
-                onChange={(e) => update(f.k, e.target.value)}>
+            {f.type === "textarea" ?
+          <textarea id={`${id}-${f.k}`} rows={f.rows || 4}
+          placeholder={f.placeholder || ""}
+          value={values[f.k] || ""}
+          onChange={(e) => update(f.k, e.target.value)} /> :
+          f.type === "select" ?
+          <select id={`${id}-${f.k}`}
+          value={values[f.k] || ""}
+          onChange={(e) => update(f.k, e.target.value)}>
                 <option value="">Select…</option>
-                {f.options.map(o => <option key={o} value={o}>{o}</option>)}
-              </select>
-            ) : (
-              <input id={`${id}-${f.k}`} type={f.type}
-                placeholder={f.placeholder || ""}
-                value={values[f.k] || ""}
-                autoComplete={f.type === "email" ? "email" : f.type === "tel" ? "tel" : "off"}
-                onChange={(e) => update(f.k, e.target.value)} />
-            )}
+                {f.options.map((o) => <option key={o} value={o}>{o}</option>)}
+              </select> :
+
+          <input id={`${id}-${f.k}`} type={f.type}
+          placeholder={f.placeholder || ""}
+          value={values[f.k] || ""}
+          autoComplete={f.type === "email" ? "email" : f.type === "tel" ? "tel" : "off"}
+          onChange={(e) => update(f.k, e.target.value)} />
+          }
             {errors[f.k] && <div className="form-err">{errors[f.k]}</div>}
           </div>
-        ))}
+        )}
       </div>
       <div className="form-foot">
         <button type="submit" className="btn btn-solid" data-magnetic disabled={state === "submitting"}>
@@ -292,8 +292,8 @@ const EnquiryForm = ({ kind = "quote", id, compact = false }) => {
           We won't add you to any mailing list.
         </div>
       </div>
-    </form>
-  );
+    </form>);
+
 };
 
 Object.assign(window, { EnquiryForm, FORM_CONFIGS, loadEnquiries, STORAGE_KEY });

@@ -132,7 +132,7 @@ const FooterBar = ({ logoDirection }) =>
 
 
         </p>
-          <div className="foot-socials">
+          <div className="foot-socials" style={{ lineHeight: "2", margin: "15px 0px 0px" }}>
             <a href={LINKEDIN_HREF} target="_blank" rel="noopener noreferrer"
           className="nav-icon-btn" title="LinkedIn"><LinkedInIcon /></a>
             <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer"
